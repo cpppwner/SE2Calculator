@@ -1,15 +1,12 @@
 package at.stefaneberl.se2calculator;
 
 import android.app.Activity;
-import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import at.stefaneberl.se2calculator.databinding.ActivityCalculatorBinding;
 
 /**
  * Activity for the calculator app.
@@ -20,6 +17,8 @@ import at.stefaneberl.se2calculator.databinding.ActivityCalculatorBinding;
  */
 public class CalculatorActivity extends Activity implements CalculatorActivityView {
 
+    private CalculatorActivityPresenter presenter;
+
     private EditText dividend;
     private EditText divisor;
     private TextView output;
@@ -29,8 +28,9 @@ public class CalculatorActivity extends Activity implements CalculatorActivityVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActivityCalculatorBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_calculator);
-        binding.setPresenter(new CalculatorActivityPresenter(this));
+        setContentView(R.layout.activity_calculator);
+
+        presenter = new CalculatorActivityPresenter(this);
 
         dividend = (EditText)findViewById(R.id.editDividend);
         divisor = (EditText)findViewById(R.id.editDivisor);
@@ -38,6 +38,7 @@ public class CalculatorActivity extends Activity implements CalculatorActivityVi
         result = (TextView)findViewById(R.id.textResult);
         divideButton = (Button)findViewById(R.id.buttonDivide);
         divideButton.setEnabled(false);
+        divideButton.setOnClickListener((view) -> presenter.onDivideClicked());
 
         // setup text changed listeners on inputs to enable button
         dividend.addTextChangedListener(new TextWatcher());
