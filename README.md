@@ -1,7 +1,7 @@
 # SE2Calculator
 
 ## Introduction
-This application is for demo academic demo purposes only, namely the
+This application is for academic demo purposes only, namely the
 source "Software Engineering II" @AAU.
 The requirements specify that it shall be possible to calculate a division.
 
