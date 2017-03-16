@@ -2,7 +2,7 @@
 
 ## Introduction
 This application is for academic demo purposes only, namely the
-cource "Software Engineering II" @AAU.
+course "Software Engineering II" @AAU.
 The requirements specify that it shall be possible to calculate a division.
 
 ## Implementation
